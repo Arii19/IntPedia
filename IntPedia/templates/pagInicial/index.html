@@ -1,78 +1,205 @@
-    {% load static %}
+<!DOCTYPE html>
+<html lang="pt-br">
 
-    <!DOCTYPE html>
-    <html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IntPedia</title>
+    <link rel="stylesheet" href="styles/style.css">
+    <style>
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background-color: #f8f9fa;
+            color: #202122;
+            margin: 0;
+            padding: 0;
+        }
 
-    <head>
-        <meta charset="UTF-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>IntPedia</title> 
-        <link rel="stylesheet" href="{% static 'styles/style.css' %}">
-    </head>
+        header {
+            background: #fff;
+            border-bottom: 1px solid #a2a9b1;
+            padding: 10px 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
 
-    <body>
-        <header>
-           <!-- <img src="/assets/logo/Logo(2).png" alt="Logo da IntPedia">-->
-            <input class="busca__input" type="text" placeholder="Pesquisar na IntPedia...">
-        </header>
+        header img {
+            height: 50px;
+        }
 
-        <main>
-            <nav>
-                <a href="#">Página principal</a>
-                <a href="#">Mais vistas</a>
-                <a href="#">Novas</a>
-                <a href="#">Aleatória</a>
-            </nav>
+        .busca__input {
+            padding: 5px;
+            width: 250px;
+            border: 1px solid #a2a9b1;
+            border-radius: 4px;
+        }
 
-            <section class="conteudo">
-                <h1>Bem-vindo à IntPedia</h1>
-                <p>A <strong>IntPedia</strong> é a enciclopédia colaborativa sobre Integração de Dados,
-                    Processos e Conhecimento. Aqui você encontra <em>procedures</em>, consultas SQL,
-                    regras de negócio e muito mais para facilitar o seu dia a dia.</p>
+        main {
+            display: flex;
+            margin: 20px;
+        }
 
-                <section class="tags">
-                    <p><strong>Busque por tags:</strong></p>
-                    <ul class="tags__lista">
-                        <li class="tags__tag">Procedures</li>
-                        <li class="tags__tag">Regras de negócio</li>
-                        <li class="tags__tag">Consultas SQL</li>
-                        <li class="tags__tag">Geral</li>
-                    </ul>
-                </section>
+        nav {
+            width: 200px;
+            padding-right: 20px;
+            border-right: 1px solid #a2a9b1;
+        }
 
-                <section class="galeria">
-                    <h2>Explorar conteúdos</h2>
-                    <ul class="cards__lista">
-                        <li class="card">
-                            <!--<img class="card__imagem" src="/assets/imagens/galeria/sql.png" alt="SQL">-->
-                            <div class="card__info">
-                                <p class="card__titulo"><strong>Consultas SQL</strong></p>
-                                <p class="card__descricao">Exemplos práticos de queries em SQL Server.</p>
-                            </div>
-                        </li>
-                        <li class="card">
-<!--                             <img class="card__imagem" src="/assets/imagens/galeria/procedures.png" alt="Procedures">-->
-                            <div class="card__info">
-                                <p class="card__titulo"><strong>Procedures</strong></p>
-                                <p class="card__descricao">Procedimentos armazenados para automação de tarefas.</p>
-                            </div>
-                        </li>
-                        <li class="card">
-                           <!--  <img class="card__imagem" src="/assets/imagens/galeria/rules.png" alt="Regras de negócio">-->
-                            <div class="card__info">
-                                <p class="card__titulo"><strong>Regras de negócio</strong></p>
-                                <p class="card__descricao">Documentação das regras que regem os processos.</p>
-                            </div>
-                        </li>
-                    </ul>
-                </section>
+        nav a {
+            display: block;
+            margin: 8px 0;
+            text-decoration: none;
+            color: #0645ad;
+        }
+
+        nav a:hover {
+            text-decoration: underline;
+        }
+
+        .conteudo {
+            flex: 1;
+            padding: 0 20px;
+        }
+
+        .conteudo h1 {
+            font-size: 1.8em;
+            border-bottom: 1px solid #a2a9b1;
+            padding-bottom: 5px;
+        }
+
+        .tags {
+            margin: 20px 0;
+            background: #f1f3f5;
+            padding: 10px;
+            border: 1px solid #a2a9b1;
+        }
+
+        .tags__lista {
+            list-style: none;
+            padding: 0;
+            display: flex;
+            gap: 10px;
+        }
+
+        .tags__tag {
+            background: #e1ecf4;
+            padding: 5px 10px;
+            border: 1px solid #a2a9b1;
+            border-radius: 4px;
+            font-size: 0.9em;
+        }
+
+        .galeria {
+            margin-top: 30px;
+        }
+
+        .cards__lista {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 20px;
+            list-style: none;
+            padding: 0;
+        }
+
+        .card {
+            border: 1px solid #a2a9b1;
+            background: #fff;
+            border-radius: 6px;
+            overflow: hidden;
+        }
+
+        .card__imagem {
+            width: 100%;
+            height: auto;
+        }
+
+        .card__info {
+            padding: 10px;
+        }
+
+        footer {
+            background: #f8f9fa;
+            border-top: 1px solid #a2a9b1;
+            text-align: center;
+            padding: 15px;
+            margin-top: 30px;
+        }
+
+        footer img {
+            height: 20px;
+            margin: 0 8px;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <img src="/assets/logo/Logo(2).png" alt="Logo da IntPedia">
+        <input class="busca__input" type="text" placeholder="Pesquisar na IntPedia...">
+    </header>
+
+    <main>
+        <nav>
+            <a href="#">Página principal</a>
+            <a href="#">Mais vistas</a>
+            <a href="#">Novas</a>
+            <a href="#">Aleatória</a>
+        </nav>
+
+        <section class="conteudo">
+            <h1>Bem-vindo à IntPedia</h1>
+            <p>A <strong>IntPedia</strong> é a enciclopédia colaborativa sobre Integração de Dados,
+                Processos e Conhecimento. Aqui você encontra <em>procedures</em>, consultas SQL,
+                regras de negócio e muito mais para facilitar o seu dia a dia.</p>
+
+            <section class="tags">
+                <p><strong>Busque por tags:</strong></p>
+                <ul class="tags__lista">
+                    <li class="tags__tag">Procedures</li>
+                    <li class="tags__tag">Regras de negócio</li>
+                    <li class="tags__tag">Consultas SQL</li>
+                    <li class="tags__tag">Geral</li>
+                </ul>
             </section>
-        </main>
 
-        <footer>
-            <p>IntPedia © 2025 </p>
-        </footer>
-    </body>
+            <section class="galeria">
+                <h2>Explorar conteúdos</h2>
+                <ul class="cards__lista">
+                    <li class="card">
+                        <img class="card__imagem" src="/assets/imagens/galeria/sql.png" alt="SQL">
+                        <div class="card__info">
+                            <p class="card__titulo"><strong>Consultas SQL</strong></p>
+                            <p class="card__descricao">Exemplos práticos de queries em SQL Server.</p>
+                        </div>
+                    </li>
+                    <li class="card">
+                        <img class="card__imagem" src="/assets/imagens/galeria/procedures.png" alt="Procedures">
+                        <div class="card__info">
+                            <p class="card__titulo"><strong>Procedures</strong></p>
+                            <p class="card__descricao">Procedimentos armazenados para automação de tarefas.</p>
+                        </div>
+                    </li>
+                    <li class="card">
+                        <img class="card__imagem" src="/assets/imagens/galeria/rules.png" alt="Regras de negócio">
+                        <div class="card__info">
+                            <p class="card__titulo"><strong>Regras de negócio</strong></p>
+                            <p class="card__descricao">Documentação das regras que regem os processos.</p>
+                        </div>
+                    </li>
+                </ul>
+            </section>
+        </section>
+    </main>
 
-    </html>
+    <footer>
+        <p>IntPedia © 2025 – Inspirado na Wikipédia</p>
+        <div>
+            <a href="#"><img src="/assets/ícones/1x/twitter.png" alt="Twitter"></a>
+            <a href="#"><img src="/assets/ícones/1x/instagram.png" alt="Instagram"></a>
+        </div>
+    </footer>
+</body>
+
+</html>
